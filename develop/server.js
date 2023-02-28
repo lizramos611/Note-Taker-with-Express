@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 //adding in paths
-const api = require('./public/index.js');
+const api = require('./routes/notes.js');
 
 const path = require('path');
 
