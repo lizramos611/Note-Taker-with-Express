@@ -1,17 +1,17 @@
-const { json } = require("body-parser");
+
 
 let noteTitle;
 let noteInput;
-let saveNote;
-let newNote;
+let saveNoteBtn;
+let newNoteBtn;
 let noteList;
 
 
 if (window.location.pathname === '/notes'){
     noteTitle = document.querySelector('.note-title');
     noteInput = document.querySelector('.note-input');
-    saveNote = document.querySelector('.save-note');
-    newNote = document.querySelector('.new-note');
+    saveNoteBtn = document.querySelector('.save-note');
+    newNoteBtn = document.querySelector('.new-note');
     noteList = document.querySelectorAll('.list-group .list-container');
 
 }
@@ -60,7 +60,7 @@ fetch('/api/notes', {
 
 
 const renderActiveNote = () => {
-    hide(saveNote);
+    hide(saveNoteBtn);
 
     if (activeNote.id) {
         noteTitle.setAttribute('readonly', true);
@@ -86,7 +86,7 @@ const noteSaving = () => {
        title: noteTitle.value,
 
     };
-    saveNote(newNote).then(() =>{
+    saveNotes(newNote).then(() =>{
         getNewNotes();
         renderActiveNote();
     });
@@ -121,11 +121,11 @@ const newNoteView = (e) => {
 
 const saveButton = () => {
     if(!noteTitle.value.trim() || !noteInput.value.trim()) {
-        hide(saveNote);
+        hide(saveNoteBtn);
 
     }
     else {
-        show(saveNote);
+        show(saveNoteBtn);
     }
 }
 
