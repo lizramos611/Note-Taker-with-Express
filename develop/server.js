@@ -23,7 +23,7 @@ res.sendFile(path.join(__dirname, '/public/index.html')));
 
 //get route for notes page
 app.get('/notes', (req, res) =>
-res.sendFile(path.join(__dirname, '/piublic/notes.html')));
+res.sendFile(path.join(__dirname, '/public/notes.html')));
 
 
 //port we will be listening on to access site
