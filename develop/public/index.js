@@ -127,13 +127,13 @@ const saveButton = () => {
     else {
         show(saveNoteBtn);
     }
-}
+};
 
 
 const newNoteList = async (notes) => {
     let jsonNotes = await notes.json();
 if (window.location.pathname === '/notes') {
-    noteList.forEarch((element) => (element.innerHTML = ''))
+    noteList.forEach((element) => (element.innerHTML = ''))
 }
 
 let noteListItems = [];
@@ -184,6 +184,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', newNoteView);
   noteTitle.addEventListener('keyup', saveButton);
   noteInput.addEventListener('keyup', saveButton);
+
 }
 
 getAndRenderNotes();
