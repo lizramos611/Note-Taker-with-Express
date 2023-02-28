@@ -183,7 +183,7 @@ if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', noteSaving);
   newNoteBtn.addEventListener('click', newNoteView);
   noteTitle.addEventListener('keyup', saveButton);
-  noteText.addEventListener('keyup', saveButton);
+  noteInput.addEventListener('keyup', saveButton);
 }
 
 getAndRenderNotes();
