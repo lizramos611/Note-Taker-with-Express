@@ -47,14 +47,14 @@ fetch(`/api/notes/${id}`, {
     }
 });
 
-const saveNotes = (notes) =>
+const saveNotes = (note) =>
 fetch('/api/notes', {
     method: 'POST',
     headers: {
         'Content-Type' : 'application/json'
 
     },
-    body: JSON.stringify(notes)
+    body: JSON.stringify(note)
 }
 );
 
@@ -87,7 +87,7 @@ const noteSaving = () => {
 
     };
     saveNotes(newNote).then(() =>{
-        getNewNotes();
+        getAndRenderNotes();
         renderActiveNote();
     });
 };
@@ -96,12 +96,12 @@ const noteDeleted = (e) => {
     const note = e.target;
     const noteID = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
-    if(activeNote.id === noteId) {
+    if(activeNote.id === noteID) {
         activeNote = {};
     }
 
-    deleteNotes(noteId.then(() => {
-        getNewNotes();
+    deleteNotes(noteID.then(() => {
+        getAndRenderNotes;
         renderActiveNote();
     }))
 }
@@ -134,9 +134,9 @@ const newNoteList = async (notes) => {
     let jsonNotes = await notes.json();
 if (window.location.pathname === '/notes') {
     noteList.forEarch((element) => (element.innerHTML = ''))
-}}
+}
 
-let noteItems = [];
+let noteListItems = [];
 
 
 const createList = (text, deletebutton = true) => {
@@ -163,11 +163,11 @@ const createList = (text, deletebutton = true) => {
 } ;
 
 if (jsonNotes.length === 0) {
-    noteListItems.push(createLi('No Notes have been saved', false));
+    noteListItems.push(createList('No Notes have been saved', false));
   }
 
   jsonNotes.forEach((note) => {
-    const li = createLi(note.title);
+    const li = createList(note.title);
     li.dataset.note = JSON.stringify(note);
 
     noteListItems.push(li);
@@ -175,7 +175,7 @@ if (jsonNotes.length === 0) {
 
   if (window.location.pathname === '/notes') {
     noteListItems.forEach((note) => noteList[0].append(note));
-  };
+  }};
 
 const getAndRenderNotes = () => getNotes().then(newNoteList);
 
